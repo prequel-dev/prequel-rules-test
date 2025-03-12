@@ -2,7 +2,7 @@ test:
   version: 0.0.1
 rules:
   - cre:
-      id: cre-2024-006
+      id: cre-2024-016
       severity: 1
       title: "Title"
       category: "Category"
@@ -29,9 +29,9 @@ rules:
         event:
           src: log
           origin: true
-          container_name: gke-metadata-server
+          pod_name: ^(?:gke-metrics-agent|collector)$
         match:
-          - Failed to export metrics to Cloud Monitoring
+          - Failed to export(.+)metrics to Cloud Monitoring(.+)Please retry(.+)contact support
   - cre:
       id: cre-2024-007
       severity: 1
